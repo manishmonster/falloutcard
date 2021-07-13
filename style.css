@@ -10,7 +10,7 @@
   --clr-light: #fff;
   --clr-accent: rbg(222,52,0);
   --clr-accent-dark: rgb(163,38,0);
-  --clr-secondary: rgb(0,62,163);
+  --clr-secondary: rgb(0, 85, 221);
   --br: .5em;
   --transition: transform 250ms cubic-bezier(.22,.9,.58,1)
 ;
@@ -37,9 +37,20 @@ img {
   max-width: 100%;
 }
 
+.btn {
+  cursor: pointer;
+  background: var(--clr-secondary);
+  border-radius: 100vw;
+  color: var(--clr-light);
+  font-weight: bold;
+  padding: .5em 1.5em;
+  border: 0px;
+}
+
 .game {
   position: relative;
   width: 12.5em;
+  cursor: pointer;
 }
 
 .rank {
@@ -96,6 +107,7 @@ img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  text-align: center;
 }
 
 .streamers img {
@@ -106,10 +118,44 @@ img {
 
 .back {
   opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1em;
+  -webkit-transform: translateY(35%);
+          transform: translateY(35%);
+}
+
+.back .streaming-info {
+  -webkit-columns: 2;
+          columns: 2;
+  -webkit-column-rule: 1px solid rgba(255, 255, 255, 0.25);
+          column-rule: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.back .game-stat {
+  font-size: 1.125rem;
+  text-align: center;
+}
+
+.back .game-stat span {
+  font-size: .85rem;
+  display: block;
 }
 
 .background {
-  background: #555;
+  background: #282e36;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -141,11 +187,36 @@ img {
   opacity: 0;
 }
 
+.game:hover .back {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition: opacity 150ms linear, -webkit-transform 250ms ease;
+  transition: opacity 150ms linear, -webkit-transform 250ms ease;
+  transition: transform 250ms ease, opacity 150ms linear;
+  transition: transform 250ms ease, opacity 150ms linear, -webkit-transform 250ms ease;
+}
+
+.game:hover .back .streamers {
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.game:hover .back .streamer {
+  font-size: .9rem;
+}
+
+.game:hover .back .name {
+  font-weight: bold;
+}
+
 .game:hover .background {
   transition: var(--transition), opacity 100ms linear, -webkit-transform 250ms ease-in-out;
   opacity: 1;
-  -webkit-transform: scale(1.4, 1.2);
-          transform: scale(1.4, 1.2);
+  -webkit-transform: scale(1.35, 1.5) translateY(10%);
+          transform: scale(1.35, 1.5) translateY(10%);
 }
 
 @-webkit-keyframes gamename {
